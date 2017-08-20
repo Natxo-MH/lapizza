@@ -19,7 +19,7 @@
 // ** ClearDB settings - from Heroku Environment ** //
 //** $db = parse_url($_ENV["CLEARDB_DATABASE_URL"]); */
 
-$CLEARDB_URL = parse_url(getenv("mysql://b1239c95629196:02d118d9@us-cdbr-iron-east-05.cleardb.net/heroku_608544b434d7914?reconnect=true"));
+/** $CLEARDB_URL = parse_url(getenv("mysql://b1239c95629196:02d118d9@us-cdbr-iron-east-05.cleardb.net/heroku_608544b434d7914?reconnect=true"));
 
 $conn = new mysqli(
  $CLEARDB_URL['us-cdbr-iron-east-05.cleardb.net'],
@@ -27,7 +27,48 @@ $conn = new mysqli(
  getenv('02d118d9'),
  getenv('heroku_608544b434d7914'),
  getenv('3306')
-);
+); **/
+
+
+
+
+
+// **********************************************
+// START Database connection and Configuration
+// **********************************************
+// set a default environment
+$WEBSITE_ENVIRONMENT = "Development";
+// detect the URL to determine if it's development or production
+if(stristr($_SERVER['HTTP_HOST'], 'localhost') === FALSE) $WEBSITE_ENVIRONMENT = "Production";
+// value of variables will change depending on if Development vs Production
+if ($WEBSITE_ENVIRONMENT =="Development") {
+	$host 		= "localhost";
+	$user 		= "root";
+	$password 	= "2011";
+	$database 	= "lapizzeria";
+	
+	define("APP_ENVIRONMENT", "Development");
+	define("APP_BASE_URL", "http://localhost");
+	error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors
+} else {
+	$cleardb_url 		= parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$host				= $cleardb_url["host"];
+	$user 				= $cleardb_url["user"];
+	$password			= $cleardb_url["pass"];
+	$database 			= substr($cleardb_url["path"],1);
+	define("APP_ENVIRONMENT", "Production");
+	define("APP_BASE_URL", "https://my-app-name-here.herokuapp.com");
+	#error_reporting(0); // turn OFF showing errors
+	error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors			
+}
+// connect to the database server
+$db1 = mysqli_connect($host, $user, $password) or die("Could not connect to database");
+// select the right database
+mysqli_select_db($db1, $database);
+// **********************************************
+// END Database connection and Configuration
+// **********************************************
+
 
 
 
