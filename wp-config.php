@@ -19,6 +19,15 @@
 // ** ClearDB settings - from Heroku Environment ** //
 //** $db = parse_url($_ENV["CLEARDB_DATABASE_URL"]); */
 
+$CLEARDB_URL = parse_url(getenv("mysql://b1239c95629196:02d118d9@us-cdbr-iron-east-05.cleardb.net/heroku_608544b434d7914?reconnect=true"));
+
+$conn = new mysqli(
+ $CLEARDB_URL['us-cdbr-east.cleardb.com'],
+ getenv('b1239c95629196'),
+ getenv('02d118d9'),
+ getenv('heroku_608544b434d7914'),
+ getenv('3306')
+);
 
 
 
@@ -26,54 +35,40 @@
 
 
 
+/** El nombre de tu base de datos de WordPress **/
 
-/** El nombre de tu base de datos de WordPress */
+/** define('DB_NAME', trim($db["path"],"/")); **/
 
-/** define('DB_NAME', trim($db["path"],"/")); */
-
- define('DB_NAME', 'lapizzeria'); 
-
-
-
-
-/** Tu nombre de usuario de MySQL */
-/** define('DB_USER', $db["user"]); */
-
-define('DB_USER', 'root');
+/** define('DB_NAME', 'lapizzeria'); **/
 
 
 
 
+/** Tu nombre de usuario de MySQL **/
+/** define('DB_USER', $db["user"]); **/
 
-
-/** Tu contraseña de MySQL */
-/** define('DB_PASSWORD', $db["pass"]); */
-
-
-define('DB_PASSWORD', '2011');
+/** define('DB_USER', 'root'); **/
 
 
 
 
 
 
-/** Host de MySQL (es muy probable que no necesites cambiarlo) */
-/** define('DB_HOST', $db["host"]); */
-
-define('DB_HOST', 'localhost'); 
+/** Tu contraseña de MySQL **/
+/** define('DB_PASSWORD', $db["pass"]); **/
 
 
-
+/** define('DB_PASSWORD', '2011'); **/
 
 
 
 
-/** Codificación de caracteres para la base de datos. */
-
-/** define('DB_CHARSET', 'utf8'); */
 
 
-define('DB_CHARSET', 'utf8mb4');
+/** Host de MySQL (es muy probable que no necesites cambiarlo) **/
+/** define('DB_HOST', $db["host"]); **/
+
+/** define('DB_HOST', 'localhost'); **/
 
 
 
@@ -81,8 +76,21 @@ define('DB_CHARSET', 'utf8mb4');
 
 
 
-/** Cotejamiento de la base de datos. No lo modifiques si tienes dudas. */
-define('DB_COLLATE', '');
+/** Codificación de caracteres para la base de datos. **/
+
+/** define('DB_CHARSET', 'utf8'); **/
+
+
+/** define('DB_CHARSET', 'utf8mb4'); **/
+
+
+
+
+
+
+
+/** Cotejamiento de la base de datos. No lo modifiques si tienes dudas. **/
+/** define('DB_COLLATE', ''); **/
 
 /**#@+
  * Claves únicas de autentificación.
