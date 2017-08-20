@@ -17,7 +17,7 @@
 // ** Ajustes de MySQL. Solicita estos datos a tu proveedor de alojamiento web. ** //
 
 // ** ClearDB settings - from Heroku Environment ** //
-$db = parse_url($_ENV["CLEARDB_DATABASE_URL"]); 
+//** $db = parse_url($_ENV["CLEARDB_DATABASE_URL"]); */
 
 
 
@@ -29,17 +29,17 @@ $db = parse_url($_ENV["CLEARDB_DATABASE_URL"]);
 
 /** El nombre de tu base de datos de WordPress */
 
-define('DB_NAME', trim($db["path"],"/"));
+/** define('DB_NAME', trim($db["path"],"/")); */
 
-/** define('DB_NAME', 'lapizzeria'); */
+ define('DB_NAME', 'lapizzeria'); 
 
 
 
 
 /** Tu nombre de usuario de MySQL */
-define('DB_USER', $db["user"]);
+/** define('DB_USER', $db["user"]); */
 
-/** define('DB_USER', 'root'); */
+define('DB_USER', 'root');
 
 
 
@@ -47,10 +47,10 @@ define('DB_USER', $db["user"]);
 
 
 /** Tu contraseña de MySQL */
-define('DB_PASSWORD', $db["pass"]);
+/** define('DB_PASSWORD', $db["pass"]); */
 
 
-/** define('DB_PASSWORD', '2011'); */
+define('DB_PASSWORD', '2011');
 
 
 
@@ -58,9 +58,9 @@ define('DB_PASSWORD', $db["pass"]);
 
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
-define('DB_HOST', $db["host"]);
+/** define('DB_HOST', $db["host"]); */
 
-/** define('DB_HOST', 'localhost'); */
+define('DB_HOST', 'localhost'); 
 
 
 
@@ -70,10 +70,10 @@ define('DB_HOST', $db["host"]);
 
 /** Codificación de caracteres para la base de datos. */
 
-define('DB_CHARSET', 'utf8');
+/** define('DB_CHARSET', 'utf8'); */
 
 
-/** define('DB_CHARSET', 'utf8mb4'); */
+define('DB_CHARSET', 'utf8mb4');
 
 
 
