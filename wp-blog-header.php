@@ -1,3 +1,9 @@
+
+<?php phpinfo(); ?>
+
+
+
+
 <?php
 /**
  * Loads the WordPress environment and template.
