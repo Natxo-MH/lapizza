@@ -57,7 +57,7 @@ if ($WEBSITE_ENVIRONMENT =="Development") {
 	$password			= $cleardb_url["pass"];
 	$database 			= substr($cleardb_url["path"],1);
 	define("APP_ENVIRONMENT", "Production");
-	define("APP_BASE_URL", "https://my-app-name-here.herokuapp.com");
+	define("APP_BASE_URL", "https://pizza-nmh.herokuapp.com");
 	#error_reporting(0); // turn OFF showing errors
 	error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors			
 }
