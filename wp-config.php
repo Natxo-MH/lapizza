@@ -22,7 +22,7 @@
 $CLEARDB_URL = parse_url(getenv("mysql://b1239c95629196:02d118d9@us-cdbr-iron-east-05.cleardb.net/heroku_608544b434d7914?reconnect=true"));
 
 $conn = new mysqli(
- $CLEARDB_URL['us-cdbr-east.cleardb.com'],
+ $CLEARDB_URL['us-cdbr-iron-east-05.cleardb.net'],
  getenv('b1239c95629196'),
  getenv('02d118d9'),
  getenv('heroku_608544b434d7914'),
